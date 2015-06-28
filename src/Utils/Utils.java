@@ -5,6 +5,10 @@
  */
 package Utils;
 
+import Modelo.ListaRedes;
+import Vista.Inicio;
+import javax.swing.JFrame;
+
 /**
  *
  * @author desarrollo
@@ -15,5 +19,8 @@ public class Utils {
     public static int PuertoServidor  = 50001;
     public static int PuertoClient = 50002;
     public static boolean AplicacionIniciada = false;
+    public static ListaRedes redes = new ListaRedes();
+    public static Inicio ventana;
+    
     
 }

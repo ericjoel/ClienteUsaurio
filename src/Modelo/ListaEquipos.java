@@ -20,6 +20,9 @@ public class ListaEquipos implements Serializable {
     public ListaEquipos(ArrayList<Equipo> lista) {
         this.lista = lista;
     }
+    public ListaEquipos() {
+        this.lista = new ArrayList<Equipo>();
+    }
     
     public void agregarEquipo(Equipo equipo){
         

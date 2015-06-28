@@ -16,10 +16,14 @@ import java.util.Iterator;
 public class ListaRedes implements Serializable {
     private ArrayList<Red> lista;
 
+    public ListaRedes() {
+        this.lista = new ArrayList<Red>();
+    }
+
     public ListaRedes(ArrayList<Red> lista) {
         this.lista = lista;
     }
-
+    
     public ArrayList<Red> getLista() {
         return lista;
     }
@@ -41,4 +45,32 @@ public class ListaRedes implements Serializable {
         return null;
         
     }
+    
+    public ListaArchivos obtenerArchivos(){
+        
+        ListaArchivos archivos = new ListaArchivos();
+        for (Red red : Utils.Utils.redes.getLista()) {
+            for (Equipo equipo: red.getListaEquipos().getLista()){
+                for (Archivo archivo: equipo.getArchivos().getLista()){
+                    archivos.agregarArchivo(archivo);
+                }
+            }
+        }
+        
+        return archivos;    
+    }
+    
+    public RespuestaInterfaz buscarArchivo(Archivo archivoBuscar){
+        for (Red red : Utils.Utils.redes.getLista()) {
+            for (Equipo equipo: red.getListaEquipos().getLista()){
+                for (Archivo archivo: equipo.getArchivos().getLista()){
+                    if((archivo.getNombre() + "." + archivo.getExtension()).equals(archivoBuscar.getNombre())){
+                        return new RespuestaInterfaz(red.getNombre(),String.valueOf(equipo.getNumero()),archivo.getContenido());
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    
 }
