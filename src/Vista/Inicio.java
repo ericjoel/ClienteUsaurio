@@ -321,6 +321,11 @@ public class Inicio extends javax.swing.JFrame {
             this.jComboBoxEquipo.setEnabled(true);
             this.jComboBoxRed.setModel(new DefaultComboBoxModel(new String[] { "Seleccione una red" }));               
             this.jComboBoxRed.setEnabled(true);
+            Iterator iteratorRed = Utils.redes.getLista().iterator();
+            while (iteratorRed.hasNext()){
+                Red redTem = (Red) iteratorRed.next();
+                this.jComboBoxRed.addItem(redTem.getNombre());                
+            }
             
         }
         if (!accion.equals("Crear")){
