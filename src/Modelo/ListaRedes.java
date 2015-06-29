@@ -73,6 +73,15 @@ public class ListaRedes implements Serializable {
         return null;
     }
     
+    public Red GetRedPorNombre(Red redTemp){
+        for (Red red : Utils.Utils.redes.getLista()){
+            if (red.getNombre().equals(redTemp.getNombre())){
+                return red;
+            }
+        }
+        return null;
+    }
+    
     
     
 }

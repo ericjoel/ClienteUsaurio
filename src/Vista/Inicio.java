@@ -301,9 +301,16 @@ public class Inicio extends javax.swing.JFrame {
         }
         EnviarSolicitudMensaje mensaje = new EnviarSolicitudMensaje();
         
-      //  RespuestaInterfaz respuesta = new RespuestaInterfaz()
-        mensaje.SendMessage(null);
-                
+        RespuestaInterfaz respuesta = new RespuestaInterfaz("","","");
+        respuesta.setAccion((String)this.jComboBoxAccion.getSelectedItem());
+        respuesta.setArchivo(this.jTextFieldNombreArchivo.getText());
+        respuesta.setRed((String)this.jComboBoxRed.getSelectedItem());
+        respuesta.setEquipo((String)this.jComboBoxEquipo.getSelectedItem());
+        respuesta.setMensaje(this.jTextAreaMensaje.getText());
+        Red red = Utils.redes.GetRedPorNombre(new Red(((String)this.jComboBoxRed.getSelectedItem()),null));
+        respuesta.setIp(red.getIp());
+        respuesta.setPuerto(red.getPuerto());
+        JOptionPane.showMessageDialog(this, mensaje.SendMessage(respuesta));
     }//GEN-LAST:event_jButtonEnviarMensajeActionPerformed
 
     private void jTextFieldNombreArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreArchivoActionPerformed

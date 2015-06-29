@@ -21,7 +21,7 @@ public class EnviarSolicitudMensaje {
     
     }
             
-    public void SendMessage(RespuestaInterfaz resp){
+    public String SendMessage(RespuestaInterfaz resp){
         
         Socket so;
         try {
@@ -33,10 +33,11 @@ public class EnviarSolicitudMensaje {
             output.flush();
             String message = input.readUTF();
             System.out.println(message);
+            return message;
             
         } catch (IOException ex) {
             
         }
-       
+       return "Error";
     }
 }

@@ -46,7 +46,10 @@ public class DemonioMulticastCliente extends Thread {
                 socket.receive(mensajeEntrada);
 
                 Response respuesta = (Response)this.convertFromBytes(mensajeEntrada.getData());
+                
                 ManejoServidor manejo = new ManejoServidor(respuesta);
+                manejo.setIp(mensajeEntrada.getAddress().getHostAddress());
+                manejo.setPuerto(mensajeEntrada.getPort());
                 manejo.start();
                 
                 System.out.println("Recibida red nueva llamada:" + respuesta.getRed().getNombre());
