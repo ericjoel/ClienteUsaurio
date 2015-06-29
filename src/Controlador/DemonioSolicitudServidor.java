@@ -5,7 +5,7 @@
  */
 package Controlador;
 
-import Modelo.Reponse.Response;
+import Modelo.Response;
 import Utils.Utils;
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,6 +38,8 @@ public class DemonioSolicitudServidor extends Thread {
         try{
             
             this.serverSocket = new ServerSocket(Utils.PuertoServidor);
+            EnviarSolicitudMulticast enviar = new EnviarSolicitudMulticast();
+            enviar.Enviar();
             while (demon){
                 
                 System.out.println("Esperando peticiones de los servidores por el puerto: " + Utils.PuertoServidor);

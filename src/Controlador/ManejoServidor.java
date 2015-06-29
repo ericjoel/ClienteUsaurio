@@ -6,7 +6,7 @@
 package Controlador;
 
 import Modelo.Red;
-import Modelo.Reponse.Response;
+import Modelo.Response;
 import java.util.Iterator;
 
 /**
@@ -21,7 +21,10 @@ public class ManejoServidor extends Thread {
     }
     
     private void ManejarRespuesta(){
-                
+        if (!response.getError().equals("") ){
+            System.out.println("Error " + response.getError());
+            return;
+        }
         for (Red red : Utils.Utils.redes.getLista()) {
             if(red.getNombre().equals(response.getRed().getNombre())){
                 red.setNombre(response.getRed().getNombre());

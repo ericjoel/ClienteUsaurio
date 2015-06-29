@@ -14,7 +14,7 @@ import javax.swing.JFrame;
  * @author desarrollo
  */
 public class Utils {
-    
+    public static int puertoClienteUDP = 56500;
     public static String IpServidor = "";
     public static int PuertoServidor  = 50001;
     public static int PuertoClient = 50002;

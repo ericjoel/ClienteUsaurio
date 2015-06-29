@@ -3,12 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo.Reponse;
+package Modelo;
 
-import Modelo.ListaArchivos;
-import Modelo.ListaEquipos;
-import Modelo.ListaRedes;
-import Modelo.Red;
 import java.io.Serializable;
 
 /**
@@ -19,12 +15,21 @@ public class Response implements Serializable {
     
     private Red red;
     private String error;
-
+    private int puertoCliente;
+    
     public Response(Red red, String error) {
         this.red = red;
         this.error = error;
     }
 
+    public int getPuertoCliente() {
+        return puertoCliente;
+    }
+
+    public void setPuertoCliente(int puertoCliente) {
+        this.puertoCliente = puertoCliente;
+    }
+    
     public Red getRed() {
         return red;
     }

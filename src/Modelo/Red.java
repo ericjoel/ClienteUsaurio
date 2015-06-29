@@ -13,6 +13,8 @@ import java.io.Serializable;
  */
 public class Red implements Serializable {
     private String nombre;
+    private String ip;
+    private int puerto;
     private ListaEquipos listaEquipos;
 
     public Red(String nombre, ListaEquipos listaEquipos) {
@@ -24,6 +26,22 @@ public class Red implements Serializable {
         return nombre;
     }
 
+    public String getIp() {
+        return ip;
+    }
+
+    public int getPuerto() {
+        return puerto;
+    }
+
+    public void setPuerto(int puerto) {
+        this.puerto = puerto;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
