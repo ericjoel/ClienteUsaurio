@@ -52,7 +52,7 @@ public class DemonioMulticastCliente extends Thread {
                 manejo.setPuerto(respuesta.getRed().getPuerto());
                 manejo.start();
                 
-                System.out.println("Recibida red nueva llamada:" + respuesta.getRed().getNombre());
+                System.out.println("Recibida nueva solicitud:" + respuesta.getRed().getNombre());
             }
         }   
         catch (Exception ex) {
