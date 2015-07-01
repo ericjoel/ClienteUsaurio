@@ -10,6 +10,7 @@ import Controlador.EnviarSolicitudMensaje;
 import Modelo.Archivo;
 import Modelo.Equipo;
 import Modelo.ListaEquipos;
+import Modelo.ListaRedes;
 import Modelo.Red;
 import Modelo.RespuestaInterfaz;
 import Utils.Utils;
@@ -393,6 +394,13 @@ public class Inicio extends javax.swing.JFrame {
             try {
                 Utils.AplicacionIniciada = false;
                 this.servidor.stopThread();
+                this.jComboBoxEquipo.setModel(new DefaultComboBoxModel(new String[] { "Seleccione un equipo" }));                
+                this.jComboBoxRed.setModel(new DefaultComboBoxModel(new String[] { "Seleccione una red" }));
+                this.jTextFieldNombreArchivo.setText("");
+                this.jComboBoxConsultar.setModel(new DefaultComboBoxModel(new String[] { "Seleccione un archivo" }));                            
+                this.jTextAreaMensaje.setText("");
+                Utils.redes = new ListaRedes();
+                
                 JOptionPane.showMessageDialog(this, "Se detuvo la aplicación");
             } catch (IOException ex) {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
