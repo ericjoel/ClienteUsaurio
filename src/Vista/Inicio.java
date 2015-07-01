@@ -309,13 +309,17 @@ public class Inicio extends javax.swing.JFrame {
         RespuestaInterfaz respuesta = new RespuestaInterfaz("","","");
         if (accion.equals("Crear")){
             accion = "I";
+            respuesta.setArchivo(this.jTextFieldNombreArchivo.getText());
         }else if (accion.equals("Modificar")){
             accion = "M";
+            respuesta.setArchivo(String.valueOf(this.jComboBoxConsultar.getSelectedItem()));
         }else if (accion.equals("Eliminar")){
             accion = "E";
+            respuesta.setArchivo(String.valueOf(this.jComboBoxConsultar.getSelectedItem()));
         }
         respuesta.setAccion(accion);
-        respuesta.setArchivo(this.jTextFieldNombreArchivo.getText());
+        
+        
         respuesta.setRed((String)this.jComboBoxRed.getSelectedItem());
         int equipo = (int)this.jComboBoxEquipo.getSelectedItem();
         respuesta.setEquipo(String.valueOf(equipo));
