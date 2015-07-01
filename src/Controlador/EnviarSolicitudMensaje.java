@@ -10,6 +10,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,8 +36,9 @@ public class EnviarSolicitudMensaje {
             System.out.println(message);
             return message;
             
-        } catch (IOException ex) {
-            
+        } catch (Exception ex) {
+            Utils.Utils.redes.eliminarRed(resp.getRed());
+            JOptionPane.showMessageDialog(Utils.Utils.ventana, "No existe la red solicitada.");
         }
        return "Error";
     }
