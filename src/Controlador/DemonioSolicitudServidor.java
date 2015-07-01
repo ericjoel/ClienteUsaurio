@@ -49,7 +49,7 @@ public class DemonioSolicitudServidor extends Thread {
                 Response response = (Response)ois.readObject();
                 ManejoServidor manejo = new ManejoServidor(response);
                 manejo.setIp(socket.getInetAddress().getHostAddress());
-                manejo.setPuerto(socket.getPort());
+                manejo.setPuerto(response.getRed().getPuerto());
                 manejo.start();
                 System.out.println( "Peticion recibida de: " +  this.socket.getInetAddress().getHostAddress());
                   

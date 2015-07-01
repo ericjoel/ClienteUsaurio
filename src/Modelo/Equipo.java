@@ -23,7 +23,9 @@ public class Equipo implements Serializable {
         this.puerto = puerto;
         this.numero = numero;
     }
-
+    public Equipo(){
+        
+    }
     public ListaArchivos getArchivos() {
         return archivos;
     }

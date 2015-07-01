@@ -49,7 +49,7 @@ public class DemonioMulticastCliente extends Thread {
                 
                 ManejoServidor manejo = new ManejoServidor(respuesta);
                 manejo.setIp(mensajeEntrada.getAddress().getHostAddress());
-                manejo.setPuerto(mensajeEntrada.getPort());
+                manejo.setPuerto(respuesta.getRed().getPuerto());
                 manejo.start();
                 
                 System.out.println("Recibida red nueva llamada:" + respuesta.getRed().getNombre());

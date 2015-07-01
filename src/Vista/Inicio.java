@@ -256,16 +256,17 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jComboBoxEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonEnviarMensaje)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonIniciarAplicacion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonDetenerAplicacion)
-                .addGap(12, 12, 12))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-406)/2, (screenSize.height-302)/2, 406, 302);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jItemConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItemConfiguracionActionPerformed
@@ -295,17 +296,28 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonIniciarAplicacionActionPerformed
 
     private void jButtonEnviarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnviarMensajeActionPerformed
-        if (!Utils.AplicacionIniciada){
-            JOptionPane.showMessageDialog(this, "Debe iniciar la aplicación.");
+        
+        String accion = (String)this.jComboBoxAccion.getSelectedItem();
+        
+        if (!Utils.AplicacionIniciada || accion.equals("Consula")){
+            JOptionPane.showMessageDialog(this, "Debe iniciar la aplicación o no seleccionar cosnsultar.");
             return;
         }
-        EnviarSolicitudMensaje mensaje = new EnviarSolicitudMensaje();
         
+        EnviarSolicitudMensaje mensaje = new EnviarSolicitudMensaje();        
         RespuestaInterfaz respuesta = new RespuestaInterfaz("","","");
-        respuesta.setAccion((String)this.jComboBoxAccion.getSelectedItem());
+        if (accion.equals("Crear")){
+            accion = "I";
+        }else if (accion.equals("Modificar")){
+            accion = "M";
+        }else if (accion.equals("Eliminar")){
+            accion = "E";
+        }
+        respuesta.setAccion(accion);
         respuesta.setArchivo(this.jTextFieldNombreArchivo.getText());
         respuesta.setRed((String)this.jComboBoxRed.getSelectedItem());
-        respuesta.setEquipo((String)this.jComboBoxEquipo.getSelectedItem());
+        int equipo = (int)this.jComboBoxEquipo.getSelectedItem();
+        respuesta.setEquipo(String.valueOf(equipo));
         respuesta.setMensaje(this.jTextAreaMensaje.getText());
         Red red = Utils.redes.GetRedPorNombre(new Red(((String)this.jComboBoxRed.getSelectedItem()),null));
         respuesta.setIp(red.getIp());
